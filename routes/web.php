@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [AuthController::class, 'login']);
-Route::post('/login', [AuthController::class, 'handleLogin']);
-Route::get('/register', [AuthController::class, 'register']);
-Route::post('/register', [AuthController::class, 'handleRegister']);
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+
+
+
+
+
+
+
+
+
+Route::get('/login', [AuthController::class, 'login'])->name('login.get');
+Route::post('/login', [AuthController::class, 'handleLogin'])->name('login.post');
+Route::get('/register', [AuthController::class, 'register'])->name('register.get');
+Route::post('/register', [AuthController::class, 'handleRegister'])->name('register.post');

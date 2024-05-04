@@ -26,7 +26,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'password'=> $request->password
             ])){
-            return redirect()->intended(route('/profile'));
+            return redirect()->intended(route('profile'));
         }
 
         return back()->withErrors([

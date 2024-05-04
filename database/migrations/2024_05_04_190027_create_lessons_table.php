@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
+            $table->string('category');
+            $table->string('description');
+            $table->integer('max_participants')->default(20);
+            $table->integer('current_participants');
+            $table->time('time');
+            $table->date('startdate');
+            $table->date('enddate');
+            $table->integer('day_of_week');
+            $table->foreignId('user_id');
+            $table->enum('status', ['available', 'full'])->default('available');
             $table->timestamps();
         });
     }
