@@ -10,23 +10,25 @@ export default function LessonForm(){
         startdate:'',
         enddate: '',
         day_of_week: '',
-        user_name:'',
-        user_id:''
+        user_ids: []
       })
 
       const {users} = usePage().props;
       
       
+    function handleCheckboxChange(userId) {
+        const updatedUserIds = data.user_ids.includes(userId)
+            ? data.user_ids.filter(id => id !== userId)
+            : [...data.user_ids, userId];
+        setData('user_ids', updatedUserIds);
+    }
+      
    
 
       function submit(e) {
-        e.preventDefault()
-        const user = users.find(user => user.name === data.user_name);
-
-        if (user) {
-            setData('user_id', user.id)
+        e.preventDefault();
             post('/lessons');
-        }
+        
        
       }
 
@@ -108,13 +110,20 @@ export default function LessonForm(){
                     {errors.day_of_week && <div>{errors.day_of_week}</div>}
                 </div>
                 <div>
-                    <label htmlFor="user_name">Docentnaam:</label>
-                    <input 
-                          type="text" 
-                          value={data.user_name} 
-                          onChange={e => setData('user_name', e.target.value)} 
-                    />
-                    {errors.user_name && <div>{errors.user_name}</div>}
+                    <label>Docenten/Studenten:</label>
+                    {users.map(user => (
+                        <div key={user.id}>
+                            <input
+                                type="checkbox"
+                                id={user.id}
+                                value={user.id}
+                                checked={data.user_ids.includes(user.id)}
+                                onChange={() => handleCheckboxChange(user.id)}
+                            />
+                            <label htmlFor={user.id}>{user.name} ({user.role})</label>
+                        </div>
+                    ))}
+                    {errors.user_ids && <div>{errors.user_ids}</div>}
                 </div>
 
                <button type="submit" disabled={processing}>Voeg les toe</button>

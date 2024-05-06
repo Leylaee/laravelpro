@@ -6,18 +6,29 @@ use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Lesson;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LessonController extends Controller
 {
     public function index()
     {
-        $lessons = Lesson::all();
+        $lessons = Lesson::with('users')->get();
+    
+
+      /*  if (Auth::user()->role !== 'admin') {
+            $lessons = $lessons->filter(function ($lesson) {
+                return $lesson->users->contains(Auth::user());
+            });
+        }*/
+       
         return Inertia::render('Lessons/Index', ['lessons' => $lessons]);
     }
 
     public function create()
     {
-        $users = User::where('role', 'docent')->get();
+        $users = User::where('role', 'docent')
+                      ->orWhere('role', 'leerling')
+                      ->get();
         return Inertia::render('Lessons/Create', ['users' => $users]);
     }
 
@@ -32,7 +43,7 @@ class LessonController extends Controller
             'startdate' => 'required',
             'enddate' => 'required',
             'day_of_week' => 'required|integer|between:1,7',
-            'user_id' => 'required|exists:users,id',
+            
         ]);
 
         $lesson = new Lesson();
@@ -43,8 +54,12 @@ class LessonController extends Controller
         $lesson->startdate = $request->startdate;
         $lesson->enddate = $request->enddate;
         $lesson->day_of_week = $request->day_of_week;
-        $lesson->user_id = $request->user_id;
         $lesson->save();
+        
+     
+        if ($request->has('user_ids')) {
+            $lesson->users()->attach($request->user_ids);
+        }
         
         return redirect()->intended(route('lessons.index', ['lesson' => $lesson]));
 
@@ -52,8 +67,12 @@ class LessonController extends Controller
     }
 
     public function edit(Lesson $lesson){
+        
+        $lesson = $lesson->with('users')->first();
+        
         return Inertia::render('Lessons/Edit', ['lesson' => $lesson]);
     }
+    
     public function update(Request $request, Lesson $lesson)
     { 
         $request->validate([
@@ -64,7 +83,6 @@ class LessonController extends Controller
             'startdate' => 'required',
             'enddate' => 'required',
             'day_of_week' => 'required|integer|between:1,7',
-            'user_id' => 'required|exists:users,id',
         ]);
 
         $lesson->category = $request->category;
@@ -74,8 +92,12 @@ class LessonController extends Controller
         $lesson->startdate = $request->startdate;
         $lesson->enddate = $request->enddate;
         $lesson->day_of_week = $request->day_of_week;
-        $lesson->user_id = $request->user_id;
+        
         $lesson->save();
+
+        if ($request->has('user_ids')) {
+            $lesson->users()->sync($request->user_ids);
+        }
         
         return redirect()->intended(route('lessons.index', ['lesson' => $lesson]));
     
@@ -83,6 +105,7 @@ class LessonController extends Controller
 
     public function destroy(Lesson $lesson)
     {
+        $lesson->users()->detach();
         $lesson->delete();
         return redirect()->back();
     }

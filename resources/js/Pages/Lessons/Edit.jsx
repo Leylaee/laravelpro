@@ -1,11 +1,31 @@
-import { useState } from "react";
-import { router } from "@inertiajs/react";
+import { useState,useEffect } from "react";
+import { router,usePage } from "@inertiajs/react";
 
 export default function Edit({ lesson }) {
-    const [lessonData, setLessonData] = useState(lesson);
+    const [lessonData, setLessonData] = useState({
+        ...lesson,
+        users_id: lesson.users.map(user => user.id) // Initialize selected users with the users already assigned to the lesson
+    });
+
+    const [selectedUsers, setSelectedUsers] = useState(lesson.users.map(user => user.id));
+
+    const { users } = usePage().props;
+
+    useEffect(() => {
+        // Update selected users when the lesson prop changes (e.g., lesson is edited)
+        setSelectedUsers(lesson.users.map(user => user.id));
+    }, [lesson]);
+
+    const handleUserSelect = (userId) => {
+        if (selectedUsers.includes(userId)) {
+            setSelectedUsers(selectedUsers.filter((id) => id !== userId));
+        } else {
+            setSelectedUsers([...selectedUsers, userId]);
+        }
+    };
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value} = e.target;
         setLessonData(prevLessonData => ({
             ...prevLessonData,
             [name]: value
@@ -13,7 +33,11 @@ export default function Edit({ lesson }) {
     }
 
     const handleSave = () => {
-        router.put(`/lessons/${lessonData.id}`, lessonData);
+        const updatedLessonData = {
+            ...lessonData,
+            users_id: selectedUsers
+        };
+        router.put(`/lessons/${lessonData.id}`, updatedLessonData);
     }
 
     return (
@@ -55,9 +79,21 @@ export default function Edit({ lesson }) {
                 </select>
             </div>
             <div>
-                <label htmlFor="user_name">Docentnaam:</label>
-                <input type="text" name="user_name" value={lessonData.user_name} onChange={handleChange} />
+                <label>Kies gebruikers:</label>
+                {lesson.users.map((user) => (
+                    <div key={user.id}>
+                        <input
+                            type="checkbox"
+                            id={`user_${user.id}`}
+                            value={user.id}
+                            checked={selectedUsers.includes(user.id)}
+                            onChange={() => handleUserSelect(user.id)}
+                        />
+                        <label htmlFor={`user_${user.id}`}>{user.name}</label>
+                    </div>
+                ))}
             </div>
+       
             <button onClick={handleSave}>Opslaan</button>
         </>
     )
