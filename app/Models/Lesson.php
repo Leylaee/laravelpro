@@ -10,6 +10,11 @@ class Lesson extends Model
 {
     protected $fillable = ['category', 'description', 'max_participants', 'current_participants' , 'time', 'startdate' , 'enddate' , 'day_of_week', 'user_id', 'status'];
     
+    protected $attributes = [
+        'current_participants' => 0,
+    ];
+
+    
     public function docent(){
         return $this->belongsTo(User::class, 'user_id');
     }

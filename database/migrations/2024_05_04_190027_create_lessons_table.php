@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('category');
             $table->string('description');
             $table->integer('max_participants')->default(20);
-            $table->integer('current_participants');
+            $table->integer('current_participants')->default(0);
             $table->time('time');
             $table->date('startdate');
             $table->date('enddate');

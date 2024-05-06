@@ -1,22 +1,40 @@
+import { useForm, usePage } from "@inertiajs/react"
+
+
 export default function LessonForm(){
     const { data, setData, post, processing, errors } = useForm({
         category: '',
         description: '',
-        time: '',
+        starttime: '',
+        endtime: '',
         startdate:'',
         enddate: '',
         day_of_week: '',
+        user_name:'',
         user_id:''
       })
+
+      const {users} = usePage().props;
       
+      
+   
+
       function submit(e) {
         e.preventDefault()
-        post('/lessons')
+        const user = users.find(user => user.name === data.user_name);
+
+        if (user) {
+            setData('user_id', user.id)
+            post('/lessons');
+        }
+       
       }
+
+     
 
     return (
         <div>
-            <h1>Login</h1>
+            <h1>Les toevoegen</h1>
             <form onSubmit={submit}>
                 <div>
                     <label htmlFor="category">Categorie:</label>
@@ -36,13 +54,22 @@ export default function LessonForm(){
                     {errors.description && <div>{errors.description}</div>}
                 </div>
                 <div>
-                    <label htmlFor="time">Tijd:</label>
+                    <label htmlFor="starttime">Starttijd:</label>
                     <input 
                           type="time" 
-                          value={data.time} 
-                          onChange={e => setData('time', e.target.value)} 
+                          value={data.starttime} 
+                          onChange={e => setData('starttime', e.target.value)} 
                     />
-                    {errors.time && <div>{errors.time}</div>}
+                    {errors.starttime && <div>{errors.starttime}</div>}
+                </div>
+                <div>
+                    <label htmlFor="endtime">eindtijd:</label>
+                    <input 
+                          type="time" 
+                          value={data.endtime} 
+                          onChange={e => setData('endtime', e.target.value)} 
+                    />
+                    {errors.endtime && <div>{errors.endtime}</div>}
                 </div>
                 <div>
                     <label htmlFor="startdate">Startdatum:</label>
@@ -81,13 +108,13 @@ export default function LessonForm(){
                     {errors.day_of_week && <div>{errors.day_of_week}</div>}
                 </div>
                 <div>
-                    <label htmlFor="user_id">Docentnaam:</label>
+                    <label htmlFor="user_name">Docentnaam:</label>
                     <input 
                           type="text" 
-                          value={data.user_id} 
-                          onChange={e => setData('user_id', e.target.value)} 
+                          value={data.user_name} 
+                          onChange={e => setData('user_name', e.target.value)} 
                     />
-                    {errors.user_id && <div>{errors.user_id}</div>}
+                    {errors.user_name && <div>{errors.user_name}</div>}
                 </div>
 
                <button type="submit" disabled={processing}>Voeg les toe</button>
