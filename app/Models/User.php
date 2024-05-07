@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Lesson;
+use App\Models\Enrollment;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -44,8 +45,14 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function lessons(){
+    public function lessons()
+    {
         return $this->belongsToMany(Lesson::class);
     }
     
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class);
+    }
+        
 }

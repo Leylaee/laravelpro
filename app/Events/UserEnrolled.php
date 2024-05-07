@@ -4,6 +4,7 @@ namespace App\Events;
 
 use App\Models\User;
 use App\Models\Lesson;
+use App\Models\Enrollment;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -16,13 +17,11 @@ class UserEnrolled
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public User $user;
-    public Lesson $lesson;
+    public $enrollment;
     
-    public function __construct(User $user, Lesson $lesson)
+    public function __construct(Enrollment $enrollment)
     {
-        $this->user = $user;
-        $this->lesson = $lesson;
+        $this->enrollment = $enrollment;
     }
 
     /**
