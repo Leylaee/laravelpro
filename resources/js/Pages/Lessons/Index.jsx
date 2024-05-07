@@ -1,15 +1,11 @@
 import { Link,useForm, usePage, router} from "@inertiajs/react";
 
 export default function Index({lessons}){
-    
+
     const handleDelete = (id) => {
         if (confirm('Weet je zeker dat je dit item wilt verwijderen?')) {
+            router.delete(`/lessons/${id}`)
         }
-        {lessons.filter(lesson => lesson.id === id (
-            router.delete('/lessons/' + lesson.id)
-        ))
-        }
-
     };
 
     return(
@@ -17,6 +13,7 @@ export default function Index({lessons}){
            <Link href='/lessons/create'>
             <button>Nieuwe les toevoegen</button>
            </Link>
+
            <ul>
               {lessons.map(lesson => (
                 <li key={lesson.id}>
@@ -43,10 +40,10 @@ export default function Index({lessons}){
                                    })}
                                 </p>
                                 <Link href={`/lessons/${lesson.id}/edit`}><button>Bewerken</button></Link>
+                                <button onClick={() => handleDelete(lesson.id)}>Verwijderen</button>
                             </>
-                        <button onClick={handleDelete}>Verwijderen</button>
-                </li>
-              ))}
+                        </li>
+                   ))}
            </ul>
         </>
     )

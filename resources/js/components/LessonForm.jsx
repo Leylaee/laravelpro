@@ -23,14 +23,10 @@ export default function LessonForm(){
         setData('user_ids', updatedUserIds);
     }
       
-   
-
-      function submit(e) {
+    function submit(e) {
         e.preventDefault();
-            post('/lessons');
-        
-       
-      }
+            post('/lessons'); 
+    }
 
      
 

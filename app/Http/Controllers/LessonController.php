@@ -68,9 +68,8 @@ class LessonController extends Controller
 
     public function edit(Lesson $lesson){
         
-        $lesson = $lesson->with('users')->first();
-        
-        return Inertia::render('Lessons/Edit', ['lesson' => $lesson]);
+        $users = User::where('role', '!=' ,'admin')->get();
+        return Inertia::render('Lessons/Edit', ['lesson' => $lesson, 'users' => $users]);
     }
     
     public function update(Request $request, Lesson $lesson)
