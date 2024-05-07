@@ -13,14 +13,11 @@ class LessonController extends Controller
     public function index()
     {
         $lessons = Lesson::with('users')->get();
-    
-
       /*  if (Auth::user()->role !== 'admin') {
             $lessons = $lessons->filter(function ($lesson) {
                 return $lesson->users->contains(Auth::user());
             });
         }*/
-       
         return Inertia::render('Lessons/Index', ['lessons' => $lessons]);
     }
 
@@ -43,7 +40,6 @@ class LessonController extends Controller
             'startdate' => 'required',
             'enddate' => 'required',
             'day_of_week' => 'required|integer|between:1,7',
-            
         ]);
 
         $lesson = new Lesson();
@@ -56,20 +52,18 @@ class LessonController extends Controller
         $lesson->day_of_week = $request->day_of_week;
         $lesson->save();
         
-     
         if ($request->has('user_ids')) {
             $lesson->users()->attach($request->user_ids);
         }
         
-        return redirect()->intended(route('lessons.index', ['lesson' => $lesson]));
-
-            
+        return redirect()->intended(route('lessons.index', ['lesson' => $lesson]));            
     }
 
     public function edit(Lesson $lesson){
         
         $users = User::where('role', '!=' ,'admin')->get();
-        return Inertia::render('Lessons/Edit', ['lesson' => $lesson, 'users' => $users]);
+        $lessonUsers = $lesson->users;
+        return Inertia::render('Lessons/Edit', ['lesson' => $lesson, 'users' => $users, 'lessonUser' => $lessonUsers]);
     }
     
     public function update(Request $request, Lesson $lesson)

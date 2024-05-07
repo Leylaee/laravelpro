@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { router,usePage } from "@inertiajs/react";
+import { useState} from "react";
+import { router} from "@inertiajs/react";
 
-export default function Edit({users,lesson}) {
+export default function Edit({users,lesson,lessonUsers}) {
     const [lessonData, setLessonData] = useState({
         category: lesson.category,
         description: lesson.description,
@@ -10,10 +10,11 @@ export default function Edit({users,lesson}) {
         startdate: lesson.startdate,
         enddate: lesson.enddate,
         day_of_week: lesson.day_of_week,
-        user_ids: lesson.users_ids
+        user_ids: lesson.user_ids
     })
 
     const [selectedUsers, setSelectedUsers] = useState({});
+
 
     const handleChange = (e) => {
         const key = e.target.id;

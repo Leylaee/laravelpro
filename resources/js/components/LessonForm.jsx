@@ -28,8 +28,6 @@ export default function LessonForm(){
             post('/lessons'); 
     }
 
-     
-
     return (
         <div>
             <h1>Les toevoegen</h1>

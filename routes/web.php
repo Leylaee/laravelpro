@@ -1,10 +1,11 @@
 <?php
 
+use App\Models\Lesson;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Lesson;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,9 @@ use App\Models\Lesson;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 
 Route::get('/lessons', [LessonController::class, 'index'])->name('lessons.index');

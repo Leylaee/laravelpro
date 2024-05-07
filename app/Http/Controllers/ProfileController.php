@@ -13,9 +13,7 @@ class ProfileController extends Controller
     public function show()
     {
         $user = Auth::user();
-        
         $lessons = $user->lessons;
-      
         return Inertia::render('Profile/Show', ['user' => $user, 'lessons' => $lessons]);
     }
 }
