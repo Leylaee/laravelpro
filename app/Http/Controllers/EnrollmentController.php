@@ -17,6 +17,12 @@ class EnrollmentController extends Controller
         $lessons = Lesson::all();
         return Inertia::render('Enrollment/Index', ['lessons' => $lessons, 'user' => $user]);
     }
+
+    public function show(){
+        $enrollments = Enrollment::all();
+        return Inertia::render('Enrollment/Show' , ['enrollments' => $enrollments]);
+        
+    }
     public function store(Request $request){
         
         $request->validate([
@@ -41,4 +47,14 @@ class EnrollmentController extends Controller
                
             return redirect()->intended(route('home', ['enrollment' => $enrollment]));            
         }
+        
+        public function updateStatus(Request $request, Enrollment $enrollment)
+        {
+            $enrollment->status = $request->status;
+            $enrollment->save(); 
+
+            return redirect()->back()->with('success', 'Status is bijgewerkt');
+        }
+
+        
      }

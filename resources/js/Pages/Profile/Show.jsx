@@ -1,9 +1,8 @@
-import AdminProfile from "../../components/AdminProfile";
-import Calendar from "../../components/Calendar";
+import AdminProfile from "./AdminProfile";
+import UserProfile from "./UserProfile";
 
 export default function Show({user,lessons}) {
 
-    const isNotAdmin = user.role !== 'admin';
     const isAdmin = user.role === 'admin';
 
     return(
@@ -14,10 +13,9 @@ export default function Show({user,lessons}) {
                              user={user}
                 />
            ) : (
-            <div>
-                 <h1>Welcome, {user.name}</h1>
-                 {isNotAdmin &&  <Calendar lessons={lessons} /> }
-            </div>
+                <UserProfile 
+                            user={user}
+                            lessons={lessons}/>
            )}
           
         </>

@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EnrollmentController;
+use App\Models\Enrollment;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +21,12 @@ use App\Http\Controllers\EnrollmentController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
 Route::get('/enrollment', [EnrollmentController::class, 'index'])->name('enrollment.index');
 Route::post('/enrollment', [EnrollmentController::class, 'store'])->name('enrollment.store');
+Route::get('/enrollment/show', [EnrollmentController::class, 'show'])->name('enrollment.show');
+Route::put('/enrollment/{enrollment}/status', [EnrollmentController::class, 'updateStatus'])->name('enrollment.updateStatus');
+
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 

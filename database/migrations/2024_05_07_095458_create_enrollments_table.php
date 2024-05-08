@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('category');
             $table->string('description');
-            $table->enum('registration_for', ['self' , 'other'])->default('self');            
+            $table->enum('registration_for', ['self' , 'other'])->default('self');    
+            $table->enum('status', ['Afgehandeld' , 'In afwachting'])->default('In afwachting');            
             $table->foreignId('user_id');
             $table->timestamps();
         });
