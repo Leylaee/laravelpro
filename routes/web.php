@@ -20,31 +20,27 @@ use App\Models\Enrollment;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-Route::get('/enrollment', [EnrollmentController::class, 'index'])->name('enrollment.index');
-Route::post('/enrollment', [EnrollmentController::class, 'store'])->name('enrollment.store');
-Route::get('/enrollment/show', [EnrollmentController::class, 'show'])->name('enrollment.show');
-Route::put('/enrollment/{enrollment}/status', [EnrollmentController::class, 'updateStatus'])->name('enrollment.updateStatus');
-
-
-Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
-
-Route::get('/lessons', [LessonController::class, 'index'])->name('lessons.index');
-Route::get('/lessons/create', [LessonController::class, 'create'])->name('lessons.create');
-Route::post('/lessons', [LessonController::class, 'store'])->name('lessons.store');
-Route::get('/lessons/{lesson}/edit', [LessonController::class, 'edit'])->name('lessons.edit');
-Route::put('/lessons/{lesson}', [LessonController::class, 'update'])->name('lessons.update');
-Route::delete('/lessons/{lesson}', [LessonController::class, 'destroy'])->name('lessons.destroy');
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('guest');
 
 
 
+Route::get('/enrollment', [EnrollmentController::class, 'index'])->name('enrollment.index')->middleware('auth');
+Route::post('/enrollment', [EnrollmentController::class, 'store'])->name('enrollment.store')->middleware('auth');
+Route::get('/enrollment/show', [EnrollmentController::class, 'show'])->name('enrollment.show')->middleware('admin');
+Route::put('/enrollment/{enrollment}/status', [EnrollmentController::class, 'updateStatus'])->name('enrollment.updateStatus')->middleware('admin');
 
 
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile')->middleware('auth');
+
+Route::get('/lessons', [LessonController::class, 'index'])->name('lessons.index')->middleware('admin');
+Route::get('/lessons/create', [LessonController::class, 'create'])->name('lessons.create')->middleware('admin');
+Route::post('/lessons', [LessonController::class, 'store'])->name('lessons.store')->middleware('admin');
+Route::get('/lessons/{lesson}/edit', [LessonController::class, 'edit'])->name('lessons.edit')->middleware('admin');
+Route::put('/lessons/{lesson}', [LessonController::class, 'update'])->name('lessons.update')->middleware('admin');
+Route::delete('/lessons/{lesson}', [LessonController::class, 'destroy'])->name('lessons.destroy')->middleware('admin');
 
 
-
-Route::get('/login', [AuthController::class, 'login'])->name('login.get');
-Route::post('/login', [AuthController::class, 'handleLogin'])->name('login.post');
-Route::get('/register', [AuthController::class, 'register'])->name('register.get');
-Route::post('/register', [AuthController::class, 'handleRegister'])->name('register.post');
+Route::get('/login', [AuthController::class, 'login'])->name('login.get')->middleware('guest');
+Route::post('/login', [AuthController::class, 'handleLogin'])->name('login.post')->middleware('guest');
+Route::get('/register', [AuthController::class, 'register'])->name('register.get')->middleware('guest');
+Route::post('/register', [AuthController::class, 'handleRegister'])->name('register.post')->middleware('guest');

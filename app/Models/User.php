@@ -54,5 +54,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Enrollment::class);
     }
+    
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
         
 }
