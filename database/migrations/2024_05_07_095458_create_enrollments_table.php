@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('tel');
+            $table->date('birthdate');
             $table->string('email')->unique();
             $table->string('category');
-            $table->string('description');            
+            $table->string('description');
+            $table->enum('registration_for', ['self' , 'other'])->default('self');            
             $table->foreignId('user_id');
             $table->timestamps();
         });

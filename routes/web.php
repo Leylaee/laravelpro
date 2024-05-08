@@ -21,6 +21,8 @@ use App\Http\Controllers\EnrollmentController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/enrollment', [EnrollmentController::class, 'index'])->name('enrollment.index');
+Route::post('/enrollment', [EnrollmentController::class, 'store'])->name('enrollment.store');
+
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 
 Route::get('/lessons', [LessonController::class, 'index'])->name('lessons.index');
