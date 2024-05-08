@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EnrollmentController;
+use App\Http\Controllers\UserController;
 use App\Models\Enrollment;
 
 /*
@@ -29,6 +30,7 @@ Route::post('/enrollment', [EnrollmentController::class, 'store'])->name('enroll
 Route::get('/enrollment/show', [EnrollmentController::class, 'show'])->name('enrollment.show')->middleware('admin');
 Route::put('/enrollment/{enrollment}/status', [EnrollmentController::class, 'updateStatus'])->name('enrollment.updateStatus')->middleware('admin');
 
+Route::delete('/user/{userId}/unsubscribe', [UserController::class, 'unsubscribe']);
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile')->middleware('auth');
 
