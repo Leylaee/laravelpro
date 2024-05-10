@@ -2,10 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Fasthand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&family=Waterfall&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 :root{
     --black-color: black;
     --white-color: white;
-    --secondary-color: #AFBAFF;
+    --secondary-color: #D1BB9E;
     --white-smoke: #f6f6f6;
     --gray-dark: #252525
 }
@@ -31,8 +33,8 @@ body{
 .padding-right-100{
     padding-right: 100px;
 }
-.padding-top-100{
-    padding-top: 100px;
+.padding-top-150{
+    padding-top: 150px;
 }
 .padding-bottom-100{
     padding-bottom: 100px;
@@ -111,6 +113,12 @@ body{
 .font-3{
     font-family: "Waterfall", cursive;
 }
+
+.font-4{
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
 .font-size-1{
     font-size: 80px;
 }
@@ -188,11 +196,11 @@ body{
 
 /*border*/
 .border-1{
-    border-top: 4px solid #AFBAFF !important;
+    border-top: 4px solid #D1BB9E !important;
     width: 45px;
     position: absolute;
     left: 50%;
-    top: 100px;
+    top: 150px;
     transform: translateX(-50%);
 }
 
@@ -206,12 +214,57 @@ body{
     margin: 0 auto;
 }
 
+/*button*/
+.button-1{
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    border: none;
+    z-index: 2;
+    padding: 15px 25px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.button-1:hover{
+    background-color: transparent;
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+
 /* nav */
+.primary-header{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #F0EBE3;  
+    transition: background-color 500ms;
+}
+
+.primary-header.sticking{
+     box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+.nav-link{
+    font-size: 17px;
+    font-weight: 600;
+    text-shadow: 1px 1px 15px rgba(0,0,0,0.3);
+    color: #252525;  
+}
+.nav-link:hover{
+    color: var(--secondary-color);
+}
+.nav-item{
+    padding-right: 30px;
+}
 .logo img{
     width: 90px;
     height: auto;
+    filter: invert(70%);
 }
+
+
 /* scroller */
+
 .scroller-container {
     overflow: hidden;  
 }
@@ -243,40 +296,46 @@ body{
     }
 }
 
-/* video */
-video{
+
+/* hero */
+.hero {
+    position: relative;
+    max-height: 120vh;
+    height: 100vh;
+}
+
+.hero-background {
+    position: relative;
     width: 100%;
     height: 100%;
-    position: absolute;
+    background-image: url('/images/hero-background.jpg');
+    background-position: center center top;
+    background-size: cover;
     object-fit: cover;
-    transition: all .2s linear;
-    z-index: -10;
+    z-index: 0;
 }
-.video1{
-    opacity: 1;
-}
-.video2{
-    opacity: 0;
-}
-.video3{
-    opacity: 0;
-}
-.video4{
-    opacity: 0;
-}
-.videocontainer{
-    width: 100%;
-    height: 83vh;
-    background-color: rgba(37,37,37,0.4);
-    overflow: hidden;
-}
-.video-text{
-    top: 40%;
-    left: 50%;
-    white-space: nowrap;
+.hero-overlay{
     position: absolute;
-    transform: translate(-50%,-50%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(37,37,37,0.5);
+    z-index: 0;
 }
+
+.hero-background .hero-content {
+    position: absolute;
+    top: 37%;
+    left: 10%;
+    z-index: 2; 
+    color: var(--white-smoke);
+}
+.hero-content p {
+    max-width: 600px;
+}
+
+
 
 /* team-info */
 .member-pic img{
@@ -320,6 +379,7 @@ video{
     margin: 10px 0;
     transform: translateY(-20px);
     transition: transform 0.3s ease;
+    text-shadow: 0px 1px 1px rgba(0,0,0,0.3);
 }
 .member-pic-overlay i:hover{
     color: var(--gray-dark)
@@ -400,7 +460,6 @@ video{
     list-style: none;
 }
 
-
 .wrapper{
     display: flex;
     flex-direction: column;
@@ -438,6 +497,23 @@ video{
     z-index: 0;
 }
 
+.review-icon-back{
+    padding-top: 120px;
+    padding-left: 60px;
+    font-size: 50px;
+}
+.review-icon-back.lila{
+    user-select: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+.review-icon{
+    padding-top: 120px;
+    padding-right: 30px;
+    font-size: 50px;
+}
+
 .aside{
     position: relative;
     padding-top: 15px;
@@ -448,11 +524,11 @@ video{
 
 .aside > i {
     position: relative;
-    font-size: 14px;
+    font-size: 18px;
     line-height: normal;
     margin-bottom: 30px;
     padding-bottom: 20px;
-    padding-top: 20px;
+    padding-top: 80px;
     max-width: 600px;
 }
 
@@ -473,6 +549,7 @@ video{
     position: absolute;
     left: -10px;
     top: -35px;
+    padding-top: 60px;
 }
 
 .aside > i::after{
@@ -480,10 +557,12 @@ video{
     position: absolute;
     right: 0;
     bottom: -25px;
+    padding-bottom: 10px;
 }
 .name h4{
     color: var(--secondary-color);
 }
+
 
 /* news */
 .news-container {
@@ -550,20 +629,6 @@ video{
     z-index: 2;
 }
 
-.banner button{
-    background-color: var(--secondary-color);
-    color: var(--white-color);
-    border: none;
-    z-index: 2;
-    padding: 15px 25px;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-.banner button:hover{
-    background-color: transparent;
-    border: 1px solid var(--secondary-color);
-    color: var(--secondary-color);
-}
 .banner-border{
     z-index: 2;
 }
@@ -615,14 +680,21 @@ iframe{
 }
 
 @media screen and  (max-width:1200px) {
-    .nav{
-        padding: 0 15px !important;
+    .navbar-nav{
+        padding: 0 5px !important;
     }
 }
 
  @media screen and  (max-width: 768px) {
-   .video-text h1 {
-    font-size: 55px;
+    .hero-background{
+        background-position: center center;
+    }
+   .hero-content h1 {
+        font-size: 55px;
+   }
+   .hero-content p {
+        font-size: 15px;
+        max-width: 350px;
    }
     .info-content{
         padding-bottom: 50px;
@@ -664,7 +736,6 @@ iframe{
     .footer-container div{
         width: 33%;
     }
-
     .footer-info{
         width: 60% !important;
     }

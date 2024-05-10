@@ -1,0 +1,13 @@
+.fc .fc-button-primary{
+    background-color: #D1BB9E !important;
+    border: none;
+}
+
+.fc-daygrid-day-number{
+    color: black;
+    text-decoration: none;
+}
+
+.fc th{
+    color: brown;
+}
