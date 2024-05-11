@@ -685,6 +685,9 @@ footer{
     margin-left: -30px;
 }
 
+.footer-container div ul li, .footer-container p{
+    font-size: 14px;
+}
 @media screen and  (max-width:1200px) {
     .navbar-nav{
         padding: 0 5px !important;

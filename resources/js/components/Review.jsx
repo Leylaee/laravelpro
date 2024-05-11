@@ -37,7 +37,7 @@ export default function review(){
 
     return(
         <>
-          <section className="backg-color-1 text-color" id="TKE">
+          <section className="backg-color-1 text-color font-4" id="TKE">
              <div className="reviews-container d-flex justify-f-center align-center padding-top-150 padding-bottom-100">
                <div className="review position-relative">
                   <div className="review-head padding-bottom-20">

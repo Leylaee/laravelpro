@@ -49,7 +49,7 @@ export default function Schedule() {
 
     return(
         <>
-           <section className="schedule position-relative" id="lessenrooster">
+           <section className="schedule position-relative font-4" id="lessenrooster">
             <div className="padding-left-150 padding-right-150 padding-top-150 padding-bottom-100">
               <div className="border-1 text-center" />
                 <div className="schedule-title position-relative">

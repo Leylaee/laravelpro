@@ -4,7 +4,7 @@ import ContactForm from '../components/ContactForm'
 export default function Contact(){
     return(
         <>
-          <section className="contact" id="contact">
+          <section className="contact font-4" id="contact">
             <div className="d-flex column contact-container">
              <div className="contact-form position-relative text-center padding-top-150 padding-bottom-100">
                <div className="border-1" />

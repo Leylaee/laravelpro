@@ -5,7 +5,7 @@ export default function Team(){
           <div className="team-info padding-left-150 padding-right-150 padding-bottom-100 position-relative padding-top-150 container-m">
             <div className="border-1 text-center" />
                <div className=" text-center ">
-                 <h3 className="padding-top-20 padding-bottom-20 bold font-size-3 text-color">
+                 <h3 className="padding-top-20 padding-bottom-20 bold font-size-3 text-color font-4">
                   Meet the Team
                  </h3>
                  <p className='font-4'> 

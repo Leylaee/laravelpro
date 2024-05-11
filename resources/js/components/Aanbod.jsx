@@ -1,7 +1,7 @@
 export default function Aanbod(){
     return(
     <>
-    <section className="classes backg-color-2" id="aanbod">
+    <section className="classes backg-color-2 font-4" id="aanbod">
     <div className="row container-m padding-left-150 padding-right-150 padding-top-150 padding-bottom-100 position-relative">
       <div className="border-1 text-center" />
       <div className="classes-title">
