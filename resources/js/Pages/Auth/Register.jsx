@@ -1,5 +1,6 @@
-import { useForm } from "@inertiajs/react"
-
+import { useForm, Link } from "@inertiajs/react"
+import { useEffect } from "react"
+import '../../../css/register.css'
 
 export default function Register(){
 
@@ -7,28 +8,40 @@ export default function Register(){
         name:'',
         email: '',
         password: '',
-      })
+    })
       
-      function submit(e) {
+    function submit(e) {
         e.preventDefault()
         post('/register')
-      }
+    }
+
+    useEffect(() => {
+        document.body.style.backgroundColor = '#F0EBE3';
+        return () => {
+            document.body.style.backgroundColor = '';
+        };
+    }, []);
 
     return (
-        <div>
-            <h1>Login</h1>
+        <div className="register-container">
+            <div className="register-1 font-4">
+            <h1>Register</h1>
             <form onSubmit={submit}>
-                <div>
+                <div className="register-input">
+                    <div>
                     <label htmlFor="name">Naam:</label>
+                    </div>
                     <input 
                           type="text" 
                           value={data.name} 
                           onChange={e => setData('name', e.target.value)} 
                     />
-                    {errors.email && <div>{errors.email}</div>}
+                    {errors.name && <div>{errors.name}</div>}
                 </div>
-                <div>
+                <div className="register-input">
+                    <div>
                     <label htmlFor="email">E-mail:</label>
+                    </div>
                     <input 
                           type="text" 
                           value={data.email} 
@@ -36,8 +49,10 @@ export default function Register(){
                     />
                     {errors.email && <div>{errors.email}</div>}
                 </div>
-                <div>
+                <div className="register-input">
+                    <div>
                     <label htmlFor="password">Wachtwoord:</label>
+                    </div>
                     <input 
                           type="password" 
                           value={data.password} 
@@ -45,8 +60,10 @@ export default function Register(){
                     />
                     {errors.password && <div>{errors.password}</div>}
                 </div>
-                <div>
+                <div className="register-input">
+                    <div>
                     <label htmlFor="password">Bevestig wachtwoord:</label>
+                    </div>
                     <input 
                           type="password" 
                           value={data.password_confirmation} 
@@ -55,7 +72,9 @@ export default function Register(){
                     {errors.password_confirmation && <div>{errors.password_confirmation}</div>}
                 </div>
                <button type="submit" disabled={processing}>Register</button>
-            </form>
+               <p>of <Link className='loginLink' href='/login'>meld</Link> je aan</p>
+             </form>
+            </div>
         </div>
     )
 }

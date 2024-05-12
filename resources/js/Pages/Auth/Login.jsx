@@ -1,4 +1,7 @@
 import { useForm } from "@inertiajs/react"
+import { useEffect } from "react"
+import {Link} from "@inertiajs/react"
+import '../../../css/login.css'
 
 
 export default function Login(){
@@ -13,12 +16,22 @@ export default function Login(){
         post('/login')
       }
 
+      useEffect(() => {
+        document.body.style.backgroundColor = '#F0EBE3';
+        return () => {
+            document.body.style.backgroundColor = '';
+        };
+    }, []);
+
     return (
-        <div>
+        <div className="login-container font-4">
+           <div className="login-1">
             <h1>Login</h1>
             <form onSubmit={submit}>
-                <div>
+                <div className="login-input">
+                    <div>
                     <label htmlFor="email">E-mail:</label>
+                    </div>
                     <input 
                           type="text" 
                           value={data.email} 
@@ -26,8 +39,10 @@ export default function Login(){
                     />
                     {errors.email && <div>{errors.email}</div>}
                 </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
+                <div className="login-input">
+                    <div>
+                    <label htmlFor="password">Wachtwoord:</label>
+                    </div>
                     <input 
                           type="password" 
                           value={data.password} 
@@ -35,8 +50,10 @@ export default function Login(){
                     />
                     {errors.password && <div>{errors.password}</div>}
                 </div>
-               <button type="submit" disabled={processing}>Login</button>
+               <button type="submit" disabled={processing}>LOGIN</button>
+               <p>of maak een <Link className='loginLink' href='/register'>account</Link> aan</p>
             </form>
+            </div>
         </div>
     )
 }

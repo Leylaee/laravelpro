@@ -639,6 +639,9 @@ body{
 .banner-border{
     z-index: 2;
 }
+.bannerBtn{
+    z-index: 2;
+}
 
 /* contact */
 .contact-form{

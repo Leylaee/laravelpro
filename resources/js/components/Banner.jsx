@@ -1,3 +1,5 @@
+import { Link } from "@inertiajs/react"
+
 export default function Banner() {
     return(
         <>
@@ -6,7 +8,7 @@ export default function Banner() {
              <h2 className="font-3 bold-500 font-size-5 text-color-2 padding-top-50">
              Discover your potential Now
              </h2>
-            <button className='button-1'>Subscribe</button>
+             <Link href="/enrollment" className="bannerBtn"><button className='button-1'>Subscribe</button></Link>
            </section>
         </>
     )
