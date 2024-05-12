@@ -19,10 +19,14 @@ class EnrollmentController extends Controller
     }
 
     public function show(){
-        $enrollments = Enrollment::all();
-        return Inertia::render('Enrollment/Show' , ['enrollments' => $enrollments]);
-        
+        if(Auth::user()->isAdmin()) {
+          $enrollments = Enrollment::all();
+            return Inertia::render('Enrollment/Show' , ['enrollments' => $enrollments]);  
+        } else{ 
+            return redirect()->back();
+        }
     }
+    
     public function store(Request $request){
         
         $request->validate([

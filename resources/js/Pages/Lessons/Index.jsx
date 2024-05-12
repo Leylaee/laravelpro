@@ -1,4 +1,5 @@
 import { Link, router} from "@inertiajs/react";
+import '../../../css/lesson.css'
 
 export default function Index({lessons}){
 
@@ -9,14 +10,17 @@ export default function Index({lessons}){
     };
 
     return(
-        <>
+        <div className="container-m">
+          <div className="buttons padding-right-150 padding-left-150">  
+           <Link href="/profile"><button className="back">Terug</button></Link>
            <Link href='/lessons/create'>
-            <button>Nieuwe les toevoegen</button>
+            <button className="back btn2">Nieuwe les toevoegen</button>
            </Link>
-
-           <ul>
+          </div>
+        <div className="padding-right-150 padding-left-150">
+           <ul className="row lessen">
               {lessons.map(lesson => (
-                <li key={lesson.id}>
+                <li key={lesson.id} style={{backgroundColor: getCategoryColor(lesson.category)}} className="col-md-5 col-sm-12 lescategorie">
                             <>
                                 <h2>{lesson.category}</h2>
                                 <p>Beschrijving: {lesson.description}</p>
@@ -39,13 +43,14 @@ export default function Index({lessons}){
                                     }
                                    })}
                                 </p>
-                                <Link href={`/lessons/${lesson.id}/edit`}><button>Bewerken</button></Link>
-                                <button onClick={() => handleDelete(lesson.id)}>Verwijderen</button>
+                                <Link href={`/lessons/${lesson.id}/edit`}><button className="back ">Bewerken</button></Link>
+                                <button className="back btn2"  onClick={() => handleDelete(lesson.id)}>Verwijderen</button>
                             </>
                         </li>
                    ))}
            </ul>
-        </>
+           </div>
+        </div>
     )
 }
 
@@ -59,5 +64,16 @@ function getDayOfWeek(day){
         case 6: return 'Zaterdag';
         case 7: return 'Zondag';
         default: return '';
+    }
+}
+
+function getCategoryColor(category) {
+    switch (category) {
+        case 'Kleuters':
+            return 'lightblue';
+        case 'Hip-Hop':
+            return 'lightgreen';
+        default: 
+             return 'lightgrey';
     }
 }

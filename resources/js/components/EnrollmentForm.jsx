@@ -30,9 +30,14 @@ export default function EnrollmentForm(){
     }
 
     return (
+        <div className='enrol'>
+            <h1>Inschrijving</h1>
            <form onSubmit={submit}>
+            <div className='enrol1column'>
             <div>
+                <div>
                 <label htmlFor='registration_for'>Voor wie is de inschrijving bedoeld?</label>
+                </div>
                 <select id="registration_for" value={data.registration_for} onChange={e => setData('registration_for', e.target.value)}>
                       <option value="">Selecteer</option>
                       <option value="self">Voor mezelf</option>
@@ -42,7 +47,9 @@ export default function EnrollmentForm(){
             </div>
 
             <div>
+               <div>
                <label htmlFor="name">Voer volledige naam in:</label>
+               </div>
                <input 
                    type="text" 
                    value={data.name} 
@@ -52,7 +59,9 @@ export default function EnrollmentForm(){
             </div>
 
             <div>
+               <div>
                <label htmlFor="birthdate">Geboortedatum:</label>
+               </div>
                <input 
                    type="date" 
                    value={data.birthdate} 
@@ -62,7 +71,9 @@ export default function EnrollmentForm(){
             </div>
 
             <div>
+                <div>
                 <label htmlFor="tel">Telefoon:</label>
+                </div>
                 <input 
                    type="tel" 
                    value={data.tel} 
@@ -70,8 +81,16 @@ export default function EnrollmentForm(){
                 />
                 {errors.tel && <div>{errors.tel}</div>}
             </div>
+
+            </div>
+
+
+            <div className='enrol2column'>
+
             <div>
+                <div>
                 <label htmlFor="email">Email:</label>
+                </div>
                 <input 
                    type="email" 
                    value={data.email} 
@@ -80,9 +99,9 @@ export default function EnrollmentForm(){
                 {errors.email && <div>{errors.email}</div>}
             </div>
             <div>
-                <label>Selecteer les:</label>
+                <label htmlFor='les'>Selecteer les:</label>
                 {uniqueCategories.map((category) => (   
-                    <div key={category}>
+                    <div key={category} className='radio'>
                             <label>
                             <input
                                 type="radio"
@@ -93,8 +112,10 @@ export default function EnrollmentForm(){
                             />
                              {category}
                             </label>
-                        </div>
+                    </div>
                 ))}
+                {errors.category && <div>{errors.category}</div>}
+
             </div>
             <div>
             {selectedCategory  && (
@@ -116,8 +137,9 @@ export default function EnrollmentForm(){
                          </>
             )}
             </div>
-                
-               <button type="submit" disabled={processing}>Schrijf je in</button>
+         </div>
+         <button type="submit" disabled={processing} className=''>Schrijf je in</button>
         </form>
+        </div>
      );
 }

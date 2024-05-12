@@ -1,0 +1,73 @@
+.enr-container{
+   display: flex;
+
+}
+.linkerNav{
+    position: absolute;
+    background-color: #DED0B6;
+    height: 100%;
+    width: 15%;
+}
+.enrolForm{
+    position: absolute;
+    top: 20%;
+    left: 20%;  
+}
+.enrol h1{
+    padding-bottom: 18px;
+}
+
+.enrol form{
+    display: flex;
+}
+
+.enrol form input, .enrol form select{
+    width: 100%;
+    height: 35px;
+    padding: 0px 10px;
+    border: none;
+    background-color:  #F0EBE3; 
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.enrol form input[type="radio"]{
+    height: 10px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.enrol form label{
+    display: inline-flex;
+}
+.radio{
+    width: 0%;
+}
+
+
+.enrol2column{
+   
+    padding-left: 25px;
+}
+
+.enrol form button{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    height: 50px;
+    background-color: #D1BB9E;
+    color: white;
+    border: none;
+    position: absolute;
+    bottom: -70px;
+    padding-right: 10px;
+}
+
+@media screen and (min-width: 786px){
+   
+    .enrolForm{
+        top: 15%;
+        left: 30%;
+    }
+   
+}

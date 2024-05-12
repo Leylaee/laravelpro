@@ -9,15 +9,16 @@
     max-height: 900px;
 }
 
+.profile{
+    padding-bottom: 50px;
+}
+
 .settings{
    display: flex;
    flex-direction: row;
    padding-top: 50px;
 }
 
-.meldingen{
-    padding-left: 50px;
-}
 
 .meldingen h2{
     color: #252525;
@@ -26,6 +27,7 @@
 }
 .unsub{
     margin-top: 0px !important;
+    margin-right: 50px;
 }
 
 

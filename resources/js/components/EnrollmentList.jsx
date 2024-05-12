@@ -1,6 +1,6 @@
 export default function EnrollmentList({ enrollments, handleStatusChange}) {
     return ( 
-        <>
+        <div className="enrolTable">
           <table>
             <thead>
                 <tr>
@@ -35,6 +35,6 @@ export default function EnrollmentList({ enrollments, handleStatusChange}) {
             ))}
             </tbody>
          </table>  
-        </>
+        </div>
     )
 }

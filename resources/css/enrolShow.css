@@ -1,0 +1,44 @@
+
+.enrolListContainer{
+    margin-top: 50px;  
+    padding: 50px; 
+    overflow-x: auto;
+}
+.enrolListContainer h1{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.enrolTable table {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center !important;
+    border: 1px solid #252525;
+}
+.enrolTable th, td {
+    padding: 5px 15px;
+    text-align: center;
+    border-bottom: 1px solid #252525; 
+}
+.enrolTable tr:nth-child(even) {
+    background-color: grey; 
+    color: white;
+}
+
+.enrolTable th {
+    background-color: darkgray; 
+    color: white;
+}
+.enrolTable button{
+    background-color: red;
+    color: white;
+    border: none;
+}
+.back{
+    color: #252525;
+    border: none;
+    background-color: lightgray;
+    padding: 5px 15px;
+    font-size: 15px;
+}
+

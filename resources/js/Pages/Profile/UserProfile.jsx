@@ -25,7 +25,7 @@ export default function UserProfile({user,lessons}) {
 
 
   return (
-    <div>
+    <div className='profile'>
        <MainNav />
         <div className='container-m'>
          <div className="title padding-right-150 padding-left-150">
@@ -38,14 +38,15 @@ export default function UserProfile({user,lessons}) {
             </div> 
             <div className='settings'>
               <div>
-              {showDropdown ? (
+              {user ==='leerling' && (
+               showDropdown ? (
                 <Unsubscribe 
                        onUnsubscribe={handleUnsubscribe}
                 />
                 ) : (
                  <button onClick={toggleDropdown} className='button-1 unsub'>Uitschrijven</button>
                 )
-              }
+              )}
               </div>
 
               <div className='meldingen'>
