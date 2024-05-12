@@ -28,9 +28,6 @@ export default function Home(){
               <Banner />
               <Contact />
               <Footer />
-            
-
-
         </>
     )
 }
