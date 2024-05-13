@@ -54,7 +54,7 @@ export default function UserProfile({user,lessons}) {
 
          <div className="d-flex padding-right-150 padding-left-150 profile-content">  
             <div className='calendar padding-right-50'>
-              <Calendar lessons={lessons} cancelDate={cancelDate} />
+              <Calendar lessons={lessons}  />
             </div> 
             <div className='settings'>
 
