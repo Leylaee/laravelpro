@@ -4,24 +4,44 @@ import { router } from "@inertiajs/react";
 import Calendar from "../../components/Calendar"
 import Unsubscribe from "../../components/Unsubscribe";
 import MainNav from "../../components/MainNav";
+import CancelLesson from '../../components/CancelLesson';
+import moment from 'moment';
 
 
 
 export default function UserProfile({user,lessons}) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [userLessons, setUserLessons] = useState(lessons);
+  const [cancelDate, setCancelDate] = useState('');
+  const [showDate, setShowDate] = useState(false);
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   }
 
+  const toggleDate = () => {
+    setShowDate(!showDate)
+  }
+ 
+  const handleDateChange = (event) => {
+    const selectedDate = (event.target.value)
+    setCancelDate(selectedDate);
+   
+  }
 
   const handleUnsubscribe = (lessonId) => {
-   router.delete(`/user/${user.id}/unsubscribe`, lessonId)
-   const updatedLessons = userLessons.filter((lesson) => lesson.id !== lessonId);
-   setUserLessons(updatedLessons);
-   setShowDropdown(false);
+     router.delete(`/user/${user.id}/unsubscribe`, lessonId)
+     const updatedLessons = userLessons.filter((lesson) => lesson.id !== lessonId);
+     setUserLessons(updatedLessons);
+     setShowDropdown(false);
   }
+
+  const handleCancel = (event) => {
+    const selectedDate = (event.target.value)
+    setCancelDate(selectedDate);
+  }
+
+
 
 
   return (
@@ -34,19 +54,30 @@ export default function UserProfile({user,lessons}) {
 
          <div className="d-flex padding-right-150 padding-left-150 profile-content">  
             <div className='calendar padding-right-50'>
-              <Calendar lessons={lessons} />
+              <Calendar lessons={lessons} cancelDate={cancelDate} />
             </div> 
             <div className='settings'>
+
               <div>
-              {user.role === 'leerling' && (
-               showDropdown ? (
-                <Unsubscribe 
+                 {user.role === 'leerling' && (
+                   showDropdown ? (
+                   <Unsubscribe 
                        onUnsubscribe={handleUnsubscribe}
-                />
-                ) : (
-                 <button onClick={toggleDropdown} className='button-1 unsub'>Uitschrijven</button>
-                )
-              )}
+                   />
+                   ) : (
+                   <button onClick={toggleDropdown} className='button-1 unsub'>Uitschrijven</button>
+                   )
+                   )}
+
+                 {user.role === 'docent' && (
+                  showDate ? (
+                    <CancelLesson cancelDate={cancelDate} handleDateChange={handleDateChange} handleCancel={handleCancel} />
+                      
+                  ): (
+                  <button onClick={toggleDate} className='button-1 unsub'>Les annuleren</button>
+                 )  )}
+              
+              
               </div>
 
               <div className='meldingen'>

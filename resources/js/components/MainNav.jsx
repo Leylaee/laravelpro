@@ -67,44 +67,48 @@ export default function MainNav(){
               <div className="offcanvas-body">
                   <ul className="navbar-nav flex-grow-1 padding-left-200 justify-f-center align-center">
                      <li className="nav-item">
-                        <a className="nav-link" href='#home'>
+                        <Link className="nav-link" href='/'>
                            Home
-                        </a>
-                     </li>
-                     <li className="nav-item">
-                        <a className="nav-link" href="#team">
-                           Team
-                        </a>
-                     </li>
-                     <li className="nav-item">
-                         <a className="nav-link" href="#aanbod">
-                           Aanbod
-                         </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#TKE">
-                          The Katan experience
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#lessenrooster">
-                           Lessenrooster
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">
-                           Laatste nieuws
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">
-                           Contact
-                        </a>
-                    </li>
-                   <li className="nav-item login">
-                        <Link className="nav-link nav-login" href="/login">
-                           <i className="fa-solid fa-user" />
                         </Link>
+                     </li>
+                     <li className="nav-item">
+                        <Link className="nav-link" href="/#team">
+                           Team
+                        </Link>
+                     </li>
+                     <li className="nav-item">
+                         <Link className="nav-link" href="/#aanbod">
+                           Aanbod
+                         </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" href="/#TKE">
+                          The Katan experience
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" href="#lessenrooster">
+                           Lessenrooster
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" href="/#news">
+                           Laatste nieuws
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" href="#contact">
+                           Contact
+                        </Link>
+                    </li>
+                   <li className="nav-item login dropdown">
+                        <a className="nav-link dropdown-toggle nav-login" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           <i className="fa-solid fa-user" />
+                        </a>
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <Link className="dropdown-item" href="/profile">Profiel</Link>
+                          <Link className="dropdown-item" href="/logout">Uitloggen</Link>
+                      </div>
                     </li>
                  </ul>
                 </div>

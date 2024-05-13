@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\UserEnrolled;
 use Inertia\Inertia;
 use App\Models\Lesson;
 use App\Models\Enrollment;
+use App\Events\UserEnrolled;
+use App\Mail\EnrollmentApproval;
+use App\Mail\EnrollmentUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class EnrollmentController extends Controller
 {
@@ -48,7 +51,13 @@ class EnrollmentController extends Controller
             $enrollment->description = $request->description;
             $enrollment->user_id = auth()->user()->id;
             $enrollment->save();
-               
+            
+            Mail::to($request->email)
+            ->send(new EnrollmentUser($request->only(['name'])));
+
+            Mail::to('elmasleyla07@gmail.com')
+            ->send(new EnrollmentApproval($request->only(['name'])));
+            
             return redirect()->intended(route('home', ['enrollment' => $enrollment]));            
         }
         

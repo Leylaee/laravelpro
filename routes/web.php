@@ -21,7 +21,7 @@ use App\Models\Enrollment;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('guest');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/',[HomeController::class, 'send'])->middleware('guest');
 
 
@@ -42,8 +42,8 @@ Route::get('/lessons/{lesson}/edit', [LessonController::class, 'edit'])->name('l
 Route::put('/lessons/{lesson}', [LessonController::class, 'update'])->name('lessons.update')->middleware('auth');
 Route::delete('/lessons/{lesson}', [LessonController::class, 'destroy'])->name('lessons.destroy')->middleware('auth');
 
-
-Route::get('/login', [AuthController::class, 'login'])->name('login.get')->middleware('guest');
+Route::get('/login', [AuthController::class, 'login'])->name('login.get');
 Route::post('/login', [AuthController::class, 'handleLogin'])->name('login.post')->middleware('guest');
 Route::get('/register', [AuthController::class, 'register'])->name('register.get')->middleware('guest');
 Route::post('/register', [AuthController::class, 'handleRegister'])->name('register.post')->middleware('guest');
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');

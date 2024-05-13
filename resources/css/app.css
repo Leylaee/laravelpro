@@ -263,7 +263,7 @@ body{
     color: var(--secondary-color);
 }
 .nav-item{
-    padding-right: 30px;
+    padding-right: 20px;
 }
 .logo img{
     width: 90px;

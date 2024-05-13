@@ -1,7 +1,7 @@
 export default function News() {
     return (
         <>
-         <section className="news backg-color-1 text-center font-4">
+         <section className="news backg-color-1 text-center font-4" id="news">
           <div className="news-c padding-top-150 padding-bottom-100 position-relative padding-right-200 padding-left-200 container-m">
             <div className="border-1" />
               <div className="news-title">

@@ -62,5 +62,11 @@ class AuthController extends Controller
         
         return Inertia::render('Auth/Login');
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return back();   
+    }
     
 }

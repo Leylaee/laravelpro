@@ -3,8 +3,10 @@ import dayGridPlugin from "@fullcalendar/daygrid"
 import interactionPlugin from "@fullcalendar/interaction"
 import timeGridPlugin from "@fullcalendar/timegrid"
 import '../../css/calendar.css'
+import { useEffect } from "react"
+import { useState } from "react"
 
-export default function Calendar({lessons}){
+export default function Calendar({lessons, cancelDate}){
     const events = [];
     lessons.forEach((lesson) => {
 
@@ -21,10 +23,32 @@ export default function Calendar({lessons}){
           title: lesson.category,
           start: date.toISOString().slice(0, 10) + "T" + lesson.starttime,
           end: date.toISOString().slice(0, 10) + "T" + lesson.endtime,
+          
         });
       }
     }
   });
+
+  const [eventSources, setEventSources] = useState([]);
+
+  // Effect hook om de evenementbronnen bij te werken
+  useEffect(() => {
+    const updatedEventSources = lessons.map(lesson => ({
+      title: lesson.category,
+      start: lesson.startdate,
+      end: lesson.enddate,
+    }));
+
+    setEventSources(updatedEventSources);
+  }, [lessons]);
+
+
+  const eventContent = (arg) => {
+    if (arg.event.start.toISOString().slice(0, 10) === cancelDate.toISOString().slice(0, 10)) {
+      return { backgroundColor: 'red' };
+    }
+  };
+  
  
     return(
         <>
@@ -38,7 +62,8 @@ export default function Calendar({lessons}){
                         end: 'dayGridMonth,timeGridWeek,timeGridDay',
                     }
                    }
-                   events={events}
+                   events={eventSources}
+                   eventContent={eventContent}
            />
         </>
     )
