@@ -22,7 +22,7 @@ use App\Models\Enrollment;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('guest');
-
+Route::post('/',[HomeController::class, 'send'])->middleware('guest');
 
 
 
