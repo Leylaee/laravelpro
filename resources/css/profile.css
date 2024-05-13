@@ -4,6 +4,10 @@
     align-items: center;
 }
 
+
+.profileTitle{
+    font-size: 22px;
+}
 .profile-content{
     flex-direction: column;
     max-height: 900px;

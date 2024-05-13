@@ -29,7 +29,7 @@ export default function UserProfile({user,lessons}) {
        <MainNav />
         <div className='container-m'>
          <div className="title padding-right-150 padding-left-150">
-            <h1 className=''>Welcome, {user.name}</h1>
+            <h1 className='profileTitle'>Welkom, {user.name}</h1>
          </div>
 
          <div className="d-flex padding-right-150 padding-left-150 profile-content">  
@@ -38,7 +38,7 @@ export default function UserProfile({user,lessons}) {
             </div> 
             <div className='settings'>
               <div>
-              {user ==='leerling' && (
+              {user.role === 'leerling' && (
                showDropdown ? (
                 <Unsubscribe 
                        onUnsubscribe={handleUnsubscribe}

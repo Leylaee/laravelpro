@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Inertia\Inertia;
+use App\Mail\Register;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -54,6 +56,10 @@ class AuthController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
+
+        Mail::to($request->email)
+        ->send(new Register($request->only(['name'])));
+        
         return Inertia::render('Auth/Login');
     }
     

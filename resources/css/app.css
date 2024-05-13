@@ -237,7 +237,10 @@ body{
     color: var(--secondary-color);
 }
 
-
+/* erro*/
+.errors{
+    color: red;
+}
 /* nav */
 .primary-header{
     position: sticky;

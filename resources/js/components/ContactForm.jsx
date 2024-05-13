@@ -1,4 +1,5 @@
 import { useForm } from "@inertiajs/react";
+import { useEffect, useState } from "react";
 
 export default function ContactForm(){
   const { data, setData, post, processing, errors } = useForm({
@@ -8,14 +9,26 @@ export default function ContactForm(){
     message:''
   })
 
+  const [status,setStatus] = useState(null);
+  
+  useEffect(() => {
+    if(window.flash && window.flash.status) {
+      setStatus(window.flash.status);
+    }
+  },[]);
+
   function submit(e) {
     e.preventDefault();
-        post('/'); 
-}
+        post('/', {
+          onSuccess: () => setStatus('Je bericht is verstuurd.')
+        });
+   }
+
 
 
     return(
         <>
+        {status && <div>{status}</div>}
         <form onSubmit={submit}>
           <div>
             <label htmlFor="name">
@@ -28,7 +41,7 @@ export default function ContactForm(){
                 onChange={e => setData('name', e.target.value)}
               />
             </label>
-            {errors.name && <div>{errors.name}</div>}
+            {errors.name && <div className="errors">{errors.name}</div>}
           </div>
           <div>
             <label htmlFor="email">
@@ -41,7 +54,7 @@ export default function ContactForm(){
                 onChange={e => setData('email', e.target.value)}
               />
             </label>
-            {errors.email && <div>{errors.email}</div>}
+            {errors.email && <div className="errors">{errors.email}</div>}
           </div>
           <div>
             <label htmlFor="phone">
@@ -61,7 +74,7 @@ export default function ContactForm(){
                 onChange={e => setData('message', e.target.value)}
               />
             </label>
-            {errors.message && <div>{errors.message}</div>}
+            {errors.message && <div className="errors">{errors.message}</div>}
           </div>
           <button type="submit" className='button-1'>Verzenden</button>
         </form>

@@ -9,13 +9,11 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ContactMessageSent extends Mailable
+class Register extends Mailable
 {
     use Queueable, SerializesModels;
 
-
     public $data;
-
     /**
      * Create a new message instance.
      */
@@ -30,7 +28,7 @@ class ContactMessageSent extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Nieuw bericht van contactformulier',
+            subject: 'Registratiebevestiging',
         );
     }
 
@@ -39,9 +37,8 @@ class ContactMessageSent extends Mailable
      */
     public function content(): Content
     {
-
         return new Content(
-            view: 'emails.contact',
+            view: 'emails.userregister',
         );
     }
 
