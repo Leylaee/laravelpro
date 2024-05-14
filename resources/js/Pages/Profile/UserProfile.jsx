@@ -6,6 +6,7 @@ import Unsubscribe from "../../components/Unsubscribe";
 import MainNav from "../../components/MainNav";
 import CancelLesson from '../../components/CancelLesson';
 import moment from 'moment';
+import Footer from '../../components/Footer';
 
 
 
@@ -45,8 +46,9 @@ export default function UserProfile({user,lessons}) {
 
 
   return (
+    <>
+    <MainNav />
     <div className='profile'>
-       <MainNav />
         <div className='container-m'>
          <div className="title padding-right-150 padding-left-150">
             <h1 className='profileTitle'>Welkom, {user.name}</h1>
@@ -87,5 +89,7 @@ export default function UserProfile({user,lessons}) {
           </div>
         </div>
     </div>
+    <Footer />
+    </>
   )
 }

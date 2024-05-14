@@ -42,8 +42,9 @@ export default function Edit({users,lesson,lessonUsers}) {
     }
 
     return (
-        <div className="container-m">
-            <div className="lessonEdit">
+        <div className="container-m padding-top-50 padding-bottom-50">
+            <div className="lessonEdit padding-top-30">
+            <h1 className="padding-left-30 padding-bottom-10">Les bewerken</h1>
             <div className="lessonDiv">
                 <div>
                 <label htmlFor="category">Categorie:</label>

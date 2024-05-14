@@ -15,13 +15,34 @@ export default function MainNav(){
            setIsSticking(false);
        }
     }
-
        window.addEventListener('scroll' ,handleScroll);
 
        return () => {
         window.removeEventListener('scroll',handleScroll);
        };
    }, []);
+
+   useEffect(() => {
+    const handleClick = (event) => {
+            const dropdownMenu = event.currentTarget.nextElementSibling;
+
+            if(dropdownMenu) {
+                dropdownMenu.classList.toggle('show');
+            }
+        };
+        
+        const dropdownToggleElements = document.querySelectorAll('.nav-link.dropdown-toggle');
+
+        dropdownToggleElements.forEach((element) => {
+            element.addEventListener('click', handleClick);
+        })
+
+    return () => {
+        dropdownToggleElements.forEach((element) => {
+            element.removeEventListener('click', handleClick);
+        })
+    }
+   }, [])
 
 
 
@@ -102,9 +123,9 @@ export default function MainNav(){
                         </Link>
                     </li>
                    <li className="nav-item login dropdown">
-                        <a className="nav-link dropdown-toggle nav-login" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div className="nav-link dropdown-toggle nav-login" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            <i className="fa-solid fa-user" />
-                        </a>
+                        </div>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                           <Link className="dropdown-item" href="/profile">Profiel</Link>
                           <Link className="dropdown-item" href="/logout">Uitloggen</Link>

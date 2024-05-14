@@ -7,6 +7,7 @@ export default function Show({user,lessons}) {
 
     return(
         <>
+       
 
            {isAdmin ? (
                 <AdminProfile 
@@ -17,7 +18,7 @@ export default function Show({user,lessons}) {
                             user={user}
                             lessons={lessons}/>
            )}
-          
+        
         </>
     )
 }

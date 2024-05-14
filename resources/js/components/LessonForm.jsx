@@ -1,4 +1,4 @@
-import { useForm, usePage } from "@inertiajs/react"
+import { useForm, usePage, Link } from "@inertiajs/react";
 
 
 export default function LessonForm(){
@@ -29,10 +29,10 @@ export default function LessonForm(){
     }
 
     return (
-        <div>
-            <h1>Les toevoegen</h1>
-            <form onSubmit={submit}>
-                <div>
+        <div className="container-m padding-top-50 padding-bottom-50">
+            <form onSubmit={submit} className="lessonEdit padding-top-30">
+            <h1 className="padding-left-30 padding-bottom-10">Les toevoegen</h1>
+                <div className="lessonDiv">
                     <label htmlFor="category">Categorie:</label>
                     <input 
                           type="text" 
@@ -41,7 +41,7 @@ export default function LessonForm(){
                     />
                     {errors.category && <div  className="errors">{errors.category}</div>}
                 </div>
-                <div>
+                <div className="lessonDiv">
                     <label htmlFor="description">Beschrijving:</label>
                     <textarea 
                           value={data.description} 
@@ -49,7 +49,7 @@ export default function LessonForm(){
                     />
                     {errors.description && <div  className="errors">{errors.description}</div>}
                 </div>
-                <div>
+                <div className="lessonDiv">
                     <label htmlFor="starttime">Starttijd:</label>
                     <input 
                           type="time" 
@@ -58,7 +58,7 @@ export default function LessonForm(){
                     />
                     {errors.starttime && <div  className="errors">{errors.starttime}</div>}
                 </div>
-                <div>
+                <div className="lessonDiv">
                     <label htmlFor="endtime">eindtijd:</label>
                     <input 
                           type="time" 
@@ -67,7 +67,7 @@ export default function LessonForm(){
                     />
                     {errors.endtime && <div  className="errors">{errors.endtime}</div>}
                 </div>
-                <div>
+                <div className="lessonDiv">
                     <label htmlFor="startdate">Startdatum:</label>
                     <input 
                           type="date" 
@@ -76,7 +76,7 @@ export default function LessonForm(){
                     />
                     {errors.startdate && <div  className="errors">{errors.startdate}</div>}
                 </div>
-                <div>
+                <div className="lessonDiv">
                     <label htmlFor="enddate">Einddatum:</label>
                     <input 
                           type="date" 
@@ -85,7 +85,7 @@ export default function LessonForm(){
                     />
                     {errors.enddate && <div  className="errors">{errors.enddate}</div>}
                 </div>
-                <div>
+                <div className="lessonDiv">
                     <label htmlFor="day_of_week">Kies een dag:</label>
                     <select
                           name="day_of_week" 
@@ -103,11 +103,12 @@ export default function LessonForm(){
 
                     {errors.day_of_week && <div  className="errors">{errors.day_of_week}</div>}
                 </div>
-                <div>
+                <div className="lessonDiv">
                     <label>Docenten/Studenten:</label>
                     {users.map(user => (
                         <div key={user.id}>
                             <input
+                                className="check"
                                 type="checkbox"
                                 id={user.id}
                                 value={user.id}
@@ -119,8 +120,11 @@ export default function LessonForm(){
                     ))}
                     {errors.user_ids && <div  className="errors">{errors.user_ids}</div>}
                 </div>
+               <div className="editButtons margin-top-10">
+               <button type="submit" disabled={processing} className="back editbtn ">Toevoegen</button>
+               <Link href='/lessons'><button className="back editbtn btn3">Annuleren</button></Link>
+                </div>
 
-               <button type="submit" disabled={processing}>Voeg les toe</button>
             </form>
         </div>
     )
