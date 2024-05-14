@@ -43,7 +43,7 @@ export default function EnrollmentForm(){
                       <option value="self">Voor mezelf</option>
                       <option value="other">Voor iemand anders</option>
                 </select>
-                {errors.registration_for && <div>{errors.registration_for}</div>}
+                {errors.registration_for && <div className="errors">{errors.registration_for}</div>}
             </div>
 
             <div>
@@ -55,7 +55,7 @@ export default function EnrollmentForm(){
                    value={data.name} 
                    onChange={e => setData('name', e.target.value)} 
                 />
-                {errors.name && <div>{errors.name}</div>}
+                {errors.name && <div className="errors">{errors.name}</div>}
             </div>
 
             <div>
@@ -67,7 +67,7 @@ export default function EnrollmentForm(){
                    value={data.birthdate} 
                    onChange={e => setData('birthdate', e.target.value)} 
                 />
-                {errors.birthdate && <div>{errors.birthdate}</div>}
+                {errors.birthdate && <div className="errors">{errors.birthdate}</div>}
             </div>
 
             <div>
@@ -79,7 +79,7 @@ export default function EnrollmentForm(){
                    value={data.tel} 
                    onChange={e => setData('tel', e.target.value)} 
                 />
-                {errors.tel && <div>{errors.tel}</div>}
+                {errors.tel && <div className="errors" >{errors.tel}</div>}
             </div>
 
             </div>
@@ -96,7 +96,7 @@ export default function EnrollmentForm(){
                    value={data.email} 
                    onChange={e => setData('email', e.target.value)} 
                 />
-                {errors.email && <div>{errors.email}</div>}
+                {errors.email && <div className="errors">{errors.email}</div>}
             </div>
             <div>
                 <label htmlFor='les'>Selecteer les:</label>
@@ -114,7 +114,7 @@ export default function EnrollmentForm(){
                             </label>
                     </div>
                 ))}
-                {errors.category && <div>{errors.category}</div>}
+                {errors.category && <div className="errors">{errors.category}</div>}
 
             </div>
             <div>

@@ -37,7 +37,7 @@ export default function Login(){
                           value={data.email} 
                           onChange={e => setData('email', e.target.value)} 
                     />
-                    {errors.email && <div>{errors.email}</div>}
+                    {errors.email && <div className="errors">{errors.email}</div>}
                 </div>
                 <div className="login-input">
                     <div>
@@ -48,7 +48,7 @@ export default function Login(){
                           value={data.password} 
                           onChange={e => setData('password', e.target.value)} 
                     />
-                    {errors.password && <div>{errors.password}</div>}
+                    {errors.password && <div className="errors">{errors.password}</div>}
                 </div>
                <button type="submit" disabled={processing}>LOGIN</button>
                <p>of maak een <Link className='loginLink' href='/register'>account</Link> aan</p>

@@ -27,7 +27,7 @@ export default function Unsubscribe({ onUnsubscribe}) {
                <option key={lesson.id} value={lesson.id}>{lesson.category}</option>
              ))}
         </select>
-        <button onClick={handleUnsubscribe}>Unsubscribe</button>
+        <button onClick={handleUnsubscribe} className="unsub">Unsubscribe</button>
       </div>
     )
 }

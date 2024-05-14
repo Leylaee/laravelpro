@@ -39,7 +39,7 @@ export default function LessonForm(){
                           value={data.category} 
                           onChange={e => setData('category', e.target.value)} 
                     />
-                    {errors.category && <div>{errors.category}</div>}
+                    {errors.category && <div  className="errors">{errors.category}</div>}
                 </div>
                 <div>
                     <label htmlFor="description">Beschrijving:</label>
@@ -47,7 +47,7 @@ export default function LessonForm(){
                           value={data.description} 
                           onChange={e => setData('description', e.target.value)} 
                     />
-                    {errors.description && <div>{errors.description}</div>}
+                    {errors.description && <div  className="errors">{errors.description}</div>}
                 </div>
                 <div>
                     <label htmlFor="starttime">Starttijd:</label>
@@ -56,7 +56,7 @@ export default function LessonForm(){
                           value={data.starttime} 
                           onChange={e => setData('starttime', e.target.value)} 
                     />
-                    {errors.starttime && <div>{errors.starttime}</div>}
+                    {errors.starttime && <div  className="errors">{errors.starttime}</div>}
                 </div>
                 <div>
                     <label htmlFor="endtime">eindtijd:</label>
@@ -65,7 +65,7 @@ export default function LessonForm(){
                           value={data.endtime} 
                           onChange={e => setData('endtime', e.target.value)} 
                     />
-                    {errors.endtime && <div>{errors.endtime}</div>}
+                    {errors.endtime && <div  className="errors">{errors.endtime}</div>}
                 </div>
                 <div>
                     <label htmlFor="startdate">Startdatum:</label>
@@ -74,7 +74,7 @@ export default function LessonForm(){
                           value={data.startdate} 
                           onChange={e => setData('startdate', e.target.value)} 
                     />
-                    {errors.startdate && <div>{errors.startdate}</div>}
+                    {errors.startdate && <div  className="errors">{errors.startdate}</div>}
                 </div>
                 <div>
                     <label htmlFor="enddate">Einddatum:</label>
@@ -83,10 +83,10 @@ export default function LessonForm(){
                           value={data.enddate} 
                           onChange={e => setData('enddate', e.target.value)} 
                     />
-                    {errors.enddate && <div>{errors.enddate}</div>}
+                    {errors.enddate && <div  className="errors">{errors.enddate}</div>}
                 </div>
                 <div>
-                    <label htmlFor="day_of_week">Dag van de week:</label>
+                    <label htmlFor="day_of_week">Kies een dag:</label>
                     <select
                           name="day_of_week" 
                           value={data.day_of_week} 
@@ -101,7 +101,7 @@ export default function LessonForm(){
                          <option value={7}>Zondag</option>
                     </select>
 
-                    {errors.day_of_week && <div>{errors.day_of_week}</div>}
+                    {errors.day_of_week && <div  className="errors">{errors.day_of_week}</div>}
                 </div>
                 <div>
                     <label>Docenten/Studenten:</label>
@@ -117,7 +117,7 @@ export default function LessonForm(){
                             <label htmlFor={user.id}>{user.name} ({user.role})</label>
                         </div>
                     ))}
-                    {errors.user_ids && <div>{errors.user_ids}</div>}
+                    {errors.user_ids && <div  className="errors">{errors.user_ids}</div>}
                 </div>
 
                <button type="submit" disabled={processing}>Voeg les toe</button>

@@ -36,7 +36,7 @@ export default function Register(){
                           value={data.name} 
                           onChange={e => setData('name', e.target.value)} 
                     />
-                    {errors.name && <div>{errors.name}</div>}
+                    {errors.name && <div className="errors" >{errors.name}</div>}
                 </div>
                 <div className="register-input">
                     <div>
@@ -47,7 +47,7 @@ export default function Register(){
                           value={data.email} 
                           onChange={e => setData('email', e.target.value)} 
                     />
-                    {errors.email && <div>{errors.email}</div>}
+                    {errors.email && <div className="errors">{errors.email}</div>}
                 </div>
                 <div className="register-input">
                     <div>
@@ -58,7 +58,7 @@ export default function Register(){
                           value={data.password} 
                           onChange={e => setData('password', e.target.value)} 
                     />
-                    {errors.password && <div>{errors.password}</div>}
+                    {errors.password && <div className="errors">{errors.password}</div>}
                 </div>
                 <div className="register-input">
                     <div>
@@ -69,7 +69,7 @@ export default function Register(){
                           value={data.password_confirmation} 
                           onChange={e => setData('password_confirmation', e.target.value)} 
                     />
-                    {errors.password_confirmation && <div>{errors.password_confirmation}</div>}
+                    {errors.password_confirmation && <div className="errors">{errors.password_confirmation}</div>}
                 </div>
                <button type="submit" disabled={processing}>Register</button>
                <p>of <Link className='loginLink' href='/login'>meld</Link> je aan</p>
