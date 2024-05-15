@@ -411,7 +411,7 @@ body{
 /* schedule */
 
 .schedule {
-    background-image: url('../images/schedule-background.jpg');
+    background-image: url('/images/schedule-background.jpg');
     background-size: cover;
     background-position: center;
     min-height: 80vh;
