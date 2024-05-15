@@ -23,6 +23,11 @@ export default function Footer() {
                <div>
                     <h5>GET SOCIAL</h5>
                     <p>Follow us to stay connected.</p>
+                    <p className="">
+                    <span className="padding-right-10 font-size-2"><i className="fa-brands fa-facebook-f" /></span>
+                    <span className="padding-right-10 font-size-2"><i className="fa-brands fa-instagram" /></span>
+                    <span className="font-size-2"><i className="fa-brands fa-twitter" /></span>
+                    </p>
                </div>
           </div>
           </footer>
