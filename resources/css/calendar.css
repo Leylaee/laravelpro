@@ -13,9 +13,25 @@
     text-decoration: none;
 }
 
-.fc th{
-    color: brown;
+
+.fc-event-container > a {
+   color: black;
 }
-.fc-event .fc-event-start .fc-event-end .fc-event-past .fc-daygrid-event .fc-daygrid-dot-event{
+.fc .fc-content > span{
     color: black;
+}
+.fc-event-main {
+    background-color: #F0EBE3;
+}
+.fc-event-main-frame {
+    color: black
+}
+.fc-event {
+    border: transparent;
+}
+.fc-event-time, .fc-event-title {
+    color: black;
+}
+.fc-daygrid-event-dot {
+    border-color: black;
 }
