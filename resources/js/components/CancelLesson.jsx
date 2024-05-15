@@ -1,13 +1,18 @@
-export default function CancelLesson({cancelDate, handleDateChange, handleCancel}){
+export default function CancelLesson({cancelDate, handleDateChange, handleCancelLesson}){
+    
+    const handleChange = (event) => {
+        handleDateChange(event);
+    }
+    
     return(
         <>
            <input
                 type='date'
                 value={cancelDate}
-                onChange={handleDateChange}
+                onChange={handleChange}
                 className='unsub'
             />  
-            <button onClick={handleCancel}>Annuleer</button>
+            <button onClick={handleCancelLesson}>Annuleer</button>
         </>
     )
 }

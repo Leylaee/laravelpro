@@ -58,7 +58,7 @@ class EnrollmentController extends Controller
             Mail::to('elmasleyla07@gmail.com')
             ->send(new EnrollmentApproval($request->only(['name'])));
             
-            return redirect()->intended(route('home', ['enrollment' => $enrollment]));            
+            return redirect()->intended(route('home', ['enrollment' => $enrollment]))->with('message','Uw inschrijving wordt behandeld');            
         }
         
         public function updateStatus(Request $request, Enrollment $enrollment)

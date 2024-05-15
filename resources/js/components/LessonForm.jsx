@@ -115,7 +115,7 @@ export default function LessonForm(){
                                 checked={data.user_ids.includes(user.id)}
                                 onChange={() => handleCheckboxChange(user.id)}
                             />
-                            <label htmlFor={user.id}>{user.name} ({user.role})</label>
+                            <label htmlFor={user.id}> {user.name} ({user.role})</label>
                         </div>
                     ))}
                     {errors.user_ids && <div  className="errors">{errors.user_ids}</div>}

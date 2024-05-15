@@ -16,3 +16,6 @@
 .fc th{
     color: brown;
 }
+.fc-event .fc-event-start .fc-event-end .fc-event-past .fc-daygrid-event .fc-daygrid-dot-event{
+    color: black;
+}

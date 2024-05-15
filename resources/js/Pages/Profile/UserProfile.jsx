@@ -15,6 +15,7 @@ export default function UserProfile({user,lessons}) {
   const [userLessons, setUserLessons] = useState(lessons);
   const [cancelDate, setCancelDate] = useState('');
   const [showDate, setShowDate] = useState(false);
+  const [notifications,setNotifications] = useState([]);
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
@@ -37,9 +38,9 @@ export default function UserProfile({user,lessons}) {
      setShowDropdown(false);
   }
 
-  const handleCancel = (event) => {
-    const selectedDate = (event.target.value)
-    setCancelDate(selectedDate);
+  const handleCancelLesson = () => {
+      setNotifications([...notifications, `Geen les op ${cancelDate}`])
+      
   }
 
 
@@ -73,7 +74,7 @@ export default function UserProfile({user,lessons}) {
 
                  {user.role === 'docent' && (
                   showDate ? (
-                    <CancelLesson cancelDate={cancelDate} handleDateChange={handleDateChange} handleCancel={handleCancel} />
+                    <CancelLesson cancelDate={cancelDate} handleDateChange={handleDateChange} handleCancelLesson={handleCancelLesson} />
                       
                   ): (
                   <button onClick={toggleDate} className='button-1 unsub'>Les annuleren</button>
@@ -84,6 +85,13 @@ export default function UserProfile({user,lessons}) {
 
               <div className='meldingen'>
                 <h2>Meldingen:</h2>
+                {user.role === 'leerling' && (
+                  <ul>
+                    {notifications.map((notification, index) => (
+                      <li key={index}>{notification}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
           </div>

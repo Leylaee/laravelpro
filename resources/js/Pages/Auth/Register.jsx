@@ -71,7 +71,7 @@ export default function Register(){
                     />
                     {errors.password_confirmation && <div className="errors">{errors.password_confirmation}</div>}
                 </div>
-               <button type="submit" disabled={processing}>Register</button>
+               <button type="submit" disabled={processing}>Registreren</button>
                <p>of <Link className='loginLink' href='/login'>meld</Link> je aan</p>
              </form>
             </div>

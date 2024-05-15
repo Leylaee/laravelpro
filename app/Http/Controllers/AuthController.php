@@ -33,7 +33,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'identity'=> "We couldn't login with these credentials.", 
+            'email'=> "We konden niet inloggen met deze gegevens", 
         ]);
     }
     

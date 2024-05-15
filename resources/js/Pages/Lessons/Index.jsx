@@ -32,14 +32,14 @@ export default function Index({lessons}){
                                 <p>Docenten: 
                                      {lesson.users.map(user => {
                                      if (user.role === 'docent') {
-                                    return <span key={user.id}>{user.name}</span>;
+                                    return <span key={user.id}> {user.name}</span>;
                                     }
                                    })}
                                 </p>
                                 <p>Leerlingen: 
                                      {lesson.users.map(user => {
                                      if (user.role === 'leerling') {
-                                    return <span key={user.id}>{user.name}</span>;
+                                    return <span key={user.id}> {user.name}</span>;
                                     }
                                    })}
                                 </p>
@@ -73,6 +73,12 @@ function getCategoryColor(category) {
             return 'lightblue';
         case 'Hip-Hop':
             return 'lightgreen';
+        case 'Modern':
+            return 'lightpink';
+        case 'Wedstrijdgroepen':
+            return 'lightyellow';
+        case 'High level':
+            return '#E6E6FA';
         default: 
              return 'lightgrey';
     }

@@ -7,9 +7,14 @@
 
 .admin-page h1{
     margin-left: -25px;
+    font-size: 25px;
 }
 .admin-content{
    padding: 50px 150px;
+}
+
+.content-height{
+    min-height: 500px;
 }
 
 
