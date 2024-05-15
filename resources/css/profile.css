@@ -4,7 +4,6 @@
     align-items: center;
 }
 
-
 .profileTitle{
     font-size: 22px;
 }
@@ -29,6 +28,7 @@
     border-bottom: 1px solid #252525;
     font-size: 20px;
 }
+
 .unsub{
     margin-top: 0px !important;
     margin-right: 50px;
