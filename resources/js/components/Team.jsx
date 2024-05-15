@@ -20,7 +20,7 @@ export default function Team(){
                 <div className="row">
                   <div className="team-member-container text-center col-12 col-md-6 col-sm-6 col-xl-4">
                      <div className="member-pic">
-                       <img src="images/an-verantwoordelijke-katan.jpg" />
+                       <img src="images/an-verantwoordelijke-katan.jpg" alt="Foto van An Houben verantwoordelijke Studio Katan" />
                      </div>
                      <div className="member-pic-overlay">
                         <i className="fa-brands fa-facebook-f" />
@@ -34,7 +34,7 @@ export default function Team(){
                   </div>
                   <div className="team-member-container text-center col-12 col-md-6 col-sm-6 col-xl-4">
                     <div className="member-pic">
-                        <img src="images/karo-highlevel-katan.jpg" />
+                        <img src="images/karo-highlevel-katan.jpg" alt="Foto van Karo Hendrickx Studio Katan"/>
                     </div>
                     <div className="member-pic-overlay">
                         <i className="fa-brands fa-facebook-f" />
@@ -48,7 +48,7 @@ export default function Team(){
                   </div>
                   <div className="team-member-container text-center col-12 col-md-6 col-sm-6 col-xl-4">
                     <div className="member-pic">
-                        <img src="images/sophie-wedstrijdtrainer-katan.jpg" />
+                        <img src="images/sophie-wedstrijdtrainer-katan.jpg" alt="Foto van Sophie Wynants Studio Katan"/>
                     </div>
                     <div className="member-pic-overlay">
                        <i className="fa-brands fa-facebook-f" />
@@ -64,7 +64,7 @@ export default function Team(){
                   </div>
                  <div className="team-member-container text-center col-12 col-md-6  col-sm-6 col-xl-4">
                    <div className="member-pic">
-                       <img src="images/kim-kleuters-katan.jpg" />
+                       <img src="images/kim-kleuters-katan.jpg" alt="Foto van Kim Van De Beek Studio Katan" />
                    </div>
                    <div className="member-pic-overlay">
                        <i className="fa-brands fa-facebook-f" />
@@ -78,7 +78,7 @@ export default function Team(){
                </div>
                <div className="team-member-container text-center col-12 col-md-6 col-sm-6 col-xl-4 ">
                  <div className="member-pic">
-                     <img src="images/esmee-hiphop-katan.jpg" />
+                     <img src="images/esmee-hiphop-katan.jpg" alt="Foto van Esmee Roman studio Katan"/>
                 </div>
                 <div className="member-pic-overlay">
                      <i className="fa-brands fa-facebook-f" />
@@ -92,7 +92,7 @@ export default function Team(){
               </div>
               <div className="team-member-container text-center col-12 col-md-6 col-sm-6 col-xl-4">
                  <div className="member-pic">
-                   <img src="images/lina-modernedans-katan.jpg" />
+                   <img src="/images/linaa-modernedans-katan.jpg" alt="Foto van Lina Maagouz Studio Katan"/>
                  </div>
                  <div className="member-pic-overlay">
                     <i className="fa-brands fa-facebook-f" />

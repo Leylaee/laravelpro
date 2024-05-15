@@ -28,7 +28,7 @@ export default function Aanbod(){
       <div className="col-xs-12 col-md-6 d-flex text-color-2 ">
         <div className="lila number-size">03</div>
         <div className="padding-left-30 padding-top-25">
-          <h4>Kleuters</h4>
+          <h4>Kleuters (Ballet)</h4>
           <p className="width-100">
             Laat kleuters kennismaken met de vrolijke wereld van dansplezier.
           </p>

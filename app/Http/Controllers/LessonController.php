@@ -12,21 +12,26 @@ class LessonController extends Controller
 {
     public function index()
     {
-        $lessons = Lesson::with('users')->get();
-      /*  if (Auth::user()->role !== 'admin') {
-            $lessons = $lessons->filter(function ($lesson) {
-                return $lesson->users->contains(Auth::user());
-            });
-        }*/
-        return Inertia::render('Lessons/Index', ['lessons' => $lessons]);
+       
+        if(Auth::user()->isAdmin()) {
+               $lessons = Lesson::with('users')->get();
+               return Inertia::render('Lessons/Index', ['lessons' => $lessons]); 
+          } else{ 
+              return abort(403);
+          }
+       
     }
 
     public function create()
     {
-        $users = User::where('role', 'docent')
+        if(Auth::user()->isAdmin()) {
+            $users = User::where('role', 'docent')
                       ->orWhere('role', 'leerling')
                       ->get();
-        return Inertia::render('Lessons/Create', ['users' => $users]);
+            return Inertia::render('Lessons/Create', ['users' => $users]);
+        }else{ 
+            return abort(403);
+        }
     }
 
     public function store(Request $request)
@@ -60,10 +65,13 @@ class LessonController extends Controller
     }
 
     public function edit(Lesson $lesson){
-        
-        $users = User::where('role', '!=' ,'admin')->get();
-        $lessonUsers = $lesson->users;
-        return Inertia::render('Lessons/Edit', ['lesson' => $lesson, 'users' => $users, 'lessonUser' => $lessonUsers]);
+        if(Auth::user()->isAdmin()) {
+           $users = User::where('role', '!=' ,'admin')->get();
+           $lessonUsers = $lesson->users;
+           return Inertia::render('Lessons/Edit', ['lesson' => $lesson, 'users' => $users, 'lessonUser' => $lessonUsers]);
+        }else{ 
+            return abort(403);
+        }
     }
     
     public function update(Request $request, Lesson $lesson)

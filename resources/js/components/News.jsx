@@ -14,7 +14,7 @@ export default function News() {
              <div className="news-header">
                <img
                  src="images/dansvoorstelling-katan-17-18-mei.jpg"
-                 alt="afbeelding dansvoorstelling studio katan"
+                 alt="Afbeelding dansvoorstelling Studio Katan"
                />
              </div>
              <div className="news-body">
@@ -26,7 +26,7 @@ export default function News() {
              <div className="news-header">
               <img
                 src="images/pilates-katan.png"
-                alt="afbeelding pilates studio katan"
+                alt="Afbeelding pilates Studio Katan"
               />
              </div>
              <div className="news-body">

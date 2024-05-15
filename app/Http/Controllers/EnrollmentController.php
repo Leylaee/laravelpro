@@ -26,7 +26,7 @@ class EnrollmentController extends Controller
           $enrollments = Enrollment::all();
             return Inertia::render('Enrollment/Show' , ['enrollments' => $enrollments]);  
         } else{ 
-            return redirect()->back();
+            return abort(403);
         }
     }
     

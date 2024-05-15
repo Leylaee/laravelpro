@@ -39,6 +39,7 @@ export default function ContactForm(){
                 placeholder="Your Name"
                 value={data.name} 
                 onChange={e => setData('name', e.target.value)}
+                autoComplete="name"
               />
             </label>
             {errors.name && <div className="errors">{errors.name}</div>}
@@ -52,6 +53,7 @@ export default function ContactForm(){
                 placeholder="E-mail"
                 value={data.email} 
                 onChange={e => setData('email', e.target.value)}
+                autoComplete="email"
               />
             </label>
             {errors.email && <div className="errors">{errors.email}</div>}
@@ -60,7 +62,8 @@ export default function ContactForm(){
             <label htmlFor="phone">
               <input type="tel" id="phone" name="telefoon" placeholder="Phone"
                      value={data.phone} 
-               onChange={e => setData('phone', e.target.value)} />
+               onChange={e => setData('phone', e.target.value)} 
+               autoComplete="tel"/>
             </label>
             {errors.phone && <div>{errors.phone}</div>}
           </div>
